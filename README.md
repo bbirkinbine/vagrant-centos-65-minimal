@@ -1,7 +1,3 @@
-**********************************************
-TODO: 64 bit version (x86_64) is not built yet
-**********************************************
-
 
 Vagrant compatible build of:
 
@@ -21,7 +17,7 @@ Contact:
 
 	http://files.brianbirkinbine.com/vagrant-centos-64-i386-minimal.box
 
-	TODO http://files.brianbirkinbine.com/vagrant-centos-64-x86_64-minimal.box
+	http://files.brianbirkinbine.com/vagrant-centos-64-x86_64-minimal.box
 
 
 Vagrantfile:
@@ -36,7 +32,6 @@ Vagrantfile:
 
 		or (not both)
 
-		# TODO
 		# 64 bit (x86_64)
 		config.vm.box = "vagrant-centos-64-x86_64-minimal"
 		config.vm.box_url = "http://files.brianbirkinbine.com/vagrant-centos-64-x86_64-minimal.box"
@@ -178,7 +173,6 @@ Notes:
 		# for i386 (32 bit)
 		# vagrant package --base vagrant-centos-64-i386-minimal --output vagrant-centos-64-i386-minimal.box
 
-		# TODO
 		# for x86_64 (64 bit)
 		# vagrant package --base vagrant-centos-64-x86_64-minimal --output vagrant-centos-64-x86_64-minimal.box
 
@@ -190,7 +184,6 @@ Notes:
 		# for i386 (32 bit)
 		# vagrant box add vagrant-centos-64-i386-minimal ./vagrant-centos-64-i386-minimal.box
 
-		# TODO
 		# for x86_64 (64 bit)
 		# vagrant box add vagrant-centos-64-x86_64-minimal ./vagrant-centos-64-x86_64-minimal.box
 
@@ -198,7 +191,8 @@ Notes:
 Verify:
 
 	md5:	vagrant-centos-64-i386-minimal.box	92d80c7db954d924c3d3e6141f8cd00b
-	TODO md5:	vagrant-centos-64-x86_64-minimal.box	TODO
+	md5:	vagrant-centos-64-x86_64-minimal.box	16a81cd9d94d2c7a87478e8227844db3
+
 
 	# 32 bit (i386)
 	[vagrant@localhost ~]$ sudo rpm -Va
@@ -214,7 +208,20 @@ Verify:
 	1310730    4 -rw-------   1 root     root         3872 Feb 21  2013 /etc/ssh/sshd_config.vagrantbackup
 	1310735    4 -rw-r--r--   1 root     root          458 Nov 19 13:59 /etc/selinux/config.vagrantbackup
 
-	# TODO: 64 bit (x86_64)
+
+	# 64 bit (x86_64)
+	[vagrant@localhost ~]$ sudo rpm -Va
+	.......T.  c /etc/inittab
+	S.5....T.  c /etc/sudoers
+	....L....  c /etc/pam.d/fingerprint-auth
+	....L....  c /etc/pam.d/password-auth
+	....L....  c /etc/pam.d/smartcard-auth
+	....L....  c /etc/pam.d/system-auth
+	S.5....T.  c /etc/ssh/sshd_config
+	[vagrant@localhost ~]$ sudo find / -name "*.vagrantbackup" -ls
+	1049554    4 -rw-r--r--   1 root     root          458 Dec  1 00:41 /etc/selinux/config.vagrantbackup
+	1048586    4 -rw-------   1 root     root         3872 Feb 21  2013 /etc/ssh/sshd_config.vagrantbackup
+	1049567    4 -r--r-----   1 root     root         4002 Mar  1  2012 /etc/sudoers.vagrantbackup
 
 
 Security:
