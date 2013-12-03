@@ -1,11 +1,11 @@
 
 Vagrant compatible build of:
 
-	CentOS 6.4 (i386 or x86_64) minimal + changes below to be vagrant compatible
+	CentOS 6.5 (i386 or x86_64) minimal + changes below to be vagrant compatible
 
 		No chef/ruby installed on this base box, assumes using chef omnibus or other way to get ruby/chef/puppet on the system
 
-		These instructions were created using VirtualBox 4.3.2 r90405 on MacOSX 10.8.4
+		These instructions were created using VirtualBox 4.3.4 r91027 on MacOSX 10.8.4
 
 
 Contact:
@@ -15,9 +15,9 @@ Contact:
 
 .box location:
 
-	http://files.brianbirkinbine.com/vagrant-centos-64-i386-minimal.box
+	http://files.brianbirkinbine.com/vagrant-centos-65-i386-minimal.box
 
-	http://files.brianbirkinbine.com/vagrant-centos-64-x86_64-minimal.box
+	http://files.brianbirkinbine.com/vagrant-centos-65-x86_64-minimal.box
 
 
 Vagrantfile:
@@ -27,21 +27,21 @@ Vagrantfile:
 		Make sure the following is configured to point to the newly created .box in your Vagrantfile
 
 		# 32 bit (i386)
-		config.vm.box = "vagrant-centos-64-i386-minimal"
-		config.vm.box_url = "http://files.brianbirkinbine.com/vagrant-centos-64-i386-minimal.box"
+		config.vm.box = "vagrant-centos-65-i386-minimal"
+		config.vm.box_url = "http://files.brianbirkinbine.com/vagrant-centos-65-i386-minimal.box"
 
 		or (not both)
 
 		# 64 bit (x86_64)
-		config.vm.box = "vagrant-centos-64-x86_64-minimal"
-		config.vm.box_url = "http://files.brianbirkinbine.com/vagrant-centos-64-x86_64-minimal.box"
+		config.vm.box = "vagrant-centos-65-x86_64-minimal"
+		config.vm.box_url = "http://files.brianbirkinbine.com/vagrant-centos-65-x86_64-minimal.box"
 
 
 Notes:
 
-	Started with CentOS 6.4 (i386 or x86_64) minimal ISO created in Virtual Box
-		CentOS-6.4-i386-minimal.iso	6b5c727fa76fcce7c9ab6213ad3df75a (md5)
-		CentOS-6.4-x86_64-minimal.iso	4a5fa01c81cc300f4729136e28ebe600 (md5)
+	Started with CentOS 6.5 (i386 or x86_64) minimal ISO created in Virtual Box
+		CentOS-6.5-i386-minimal.iso	a4f27ab51d0d2c9d36b68c56b39f752b (md5)
+		CentOS-6.5-x86_64-minimal.iso	0d9dc37b5dd4befa1c440d2174e88a87 (md5)
 
 	VirtualBox settings changed from default
 		Type: Linux
@@ -54,7 +54,7 @@ Notes:
 	Installed onto a single partition (ext4 no LVM on /, no swap partition) 40gb dynamically allocated
 		root password: vagrant
  
-	CentOS 6.4 changes from minimal:  All modified files have the original file appended with .vagrantbackup on the filesystem
+	CentOS 6.5 changes from minimal:  All modified files have the original file appended with .vagrantbackup on the filesystem
 
 		selinux set to permissive
 			/etc/selinux/config
@@ -171,10 +171,10 @@ Notes:
 		cd 'VirtualBox VMs'
 		
 		# for i386 (32 bit)
-		# vagrant package --base vagrant-centos-64-i386-minimal --output vagrant-centos-64-i386-minimal.box
+		# vagrant package --base vagrant-centos-65-i386-minimal --output vagrant-centos-65-i386-minimal.box
 
 		# for x86_64 (64 bit)
-		# vagrant package --base vagrant-centos-64-x86_64-minimal --output vagrant-centos-64-x86_64-minimal.box
+		# vagrant package --base vagrant-centos-65-x86_64-minimal --output vagrant-centos-65-x86_64-minimal.box
 
 		
 	Vagrant box
@@ -182,16 +182,16 @@ Notes:
 		from the same directory where the .box image was created
 
 		# for i386 (32 bit)
-		# vagrant box add vagrant-centos-64-i386-minimal ./vagrant-centos-64-i386-minimal.box
+		# vagrant box add vagrant-centos-65-i386-minimal ./vagrant-centos-65-i386-minimal.box
 
 		# for x86_64 (64 bit)
-		# vagrant box add vagrant-centos-64-x86_64-minimal ./vagrant-centos-64-x86_64-minimal.box
+		# vagrant box add vagrant-centos-65-x86_64-minimal ./vagrant-centos-65-x86_64-minimal.box
 
 
 Verify:
 
-	md5:	vagrant-centos-64-i386-minimal.box	92d80c7db954d924c3d3e6141f8cd00b
-	md5:	vagrant-centos-64-x86_64-minimal.box	16a81cd9d94d2c7a87478e8227844db3
+	md5:	vagrant-centos-65-i386-minimal.box	0033447e785ce51db089abc91b7cdfcc
+	md5:	vagrant-centos-65-x86_64-minimal.box	f06620ec3e1ac50a084bd5e3aed8472e
 
 
 	# 32 bit (i386)
@@ -204,24 +204,24 @@ Verify:
 	.......T.  c /etc/inittab
 	S.5....T.  c /etc/sudoers
 	[vagrant@localhost ~]$ sudo find / -name "*.vagrantbackup" -ls
-	1311723    4 -r--r-----   1 root     root         4002 Mar  1  2012 /etc/sudoers.vagrantbackup
-	1310730    4 -rw-------   1 root     root         3872 Feb 21  2013 /etc/ssh/sshd_config.vagrantbackup
-	1310735    4 -rw-r--r--   1 root     root          458 Nov 19 13:59 /etc/selinux/config.vagrantbackup
+	2490378    4 -rw-------   1 root     root         3879 Nov 22 17:37 /etc/ssh/sshd_config.vagrantbackup
+	2491393    4 -r--r-----   1 root     root         4002 Mar  1  2012 /etc/sudoers.vagrantbackup
+	2491372    4 -rw-r--r--   1 root     root          458 Dec  1 09:10 /etc/selinux/config.vagrantbackup
 
 
 	# 64 bit (x86_64)
 	[vagrant@localhost ~]$ sudo rpm -Va
-	.......T.  c /etc/inittab
-	S.5....T.  c /etc/sudoers
 	....L....  c /etc/pam.d/fingerprint-auth
 	....L....  c /etc/pam.d/password-auth
 	....L....  c /etc/pam.d/smartcard-auth
 	....L....  c /etc/pam.d/system-auth
+	.......T.  c /etc/inittab
+	S.5....T.  c /etc/sudoers
 	S.5....T.  c /etc/ssh/sshd_config
 	[vagrant@localhost ~]$ sudo find / -name "*.vagrantbackup" -ls
-	1049554    4 -rw-r--r--   1 root     root          458 Dec  1 00:41 /etc/selinux/config.vagrantbackup
-	1048586    4 -rw-------   1 root     root         3872 Feb 21  2013 /etc/ssh/sshd_config.vagrantbackup
-	1049567    4 -r--r-----   1 root     root         4002 Mar  1  2012 /etc/sudoers.vagrantbackup
+	1704949    4 -r--r-----   1 root     root         4002 Mar  1  2012 /etc/sudoers.vagrantbackup
+	1704936    4 -rw-r--r--   1 root     root          458 Dec  3 09:44 /etc/selinux/config.vagrantbackup
+	1703946    4 -rw-------   1 root     root         3879 Nov 22 17:40 /etc/ssh/sshd_config.vagrantbackup
 
 
 Security:
