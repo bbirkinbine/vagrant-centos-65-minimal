@@ -1,0 +1,1 @@
+http://files.brianbirkinbine.com/vagrant-centos-65-i386-minimal.box
