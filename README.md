@@ -51,6 +51,32 @@ Notes:
 		Network->Adapter1->NAT
 		Hard drive size: 40 GB dynamic
 
+	First boot Kernel panic
+		If you get a Kernel panic on first boot with a new CentOS ISO, there was a bug that would cause
+		selinux policy from loading properly the first time under certain conditions
+
+			https://bugzilla.redhat.com/show_bug.cgi?id=856332
+
+		The error message would look similar to:
+
+			Kernel panic - not syncing: Attempted to kill init!
+			Pid: 1, comm: init Not tainted 2.6.32-358.el6.x86_64 #1
+			Call Trace:
+		 	 [<ffffffff8150cfc8>] ? panic+0xa7/0x16f
+		 	 <more lines similar to line above here>
+
+		The workaround for this requires you to interrupt the grub boot and tell selinux to not enforce on boot.  You can then
+		either yum update to get latest packages and/or change /etc/selinux/config to permissive (instead of enforcing).
+
+		During the boot screen where it says to 'Press any key to enter the menu', press any key to get to the grub boot menu.
+
+		At the GNU GRUB boot menu, press the 'e' key to edit the boot parameters.
+		On the second line where it has kernel /boot/vmlinuz-2.6.xxxx, append to the line enforcing=0 and hit enter.
+		You can then boot the modified change by hitting the 'b' key.
+
+		You can then continue with the steps below (the /etc/selinux/config change below should fix this issue).
+		
+
 	Installed onto a single partition (ext4 no LVM on /, no swap partition) 40gb dynamically allocated
 		root password: vagrant
  
