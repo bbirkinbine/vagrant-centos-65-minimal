@@ -8,6 +8,9 @@ Vagrant compatible build of:
 		These instructions were created using VirtualBox 4.3.4 r91027 on MacOSX 10.8.4
 
 
+	CentOS 7 - https://github.com/bbirkinbine/packer-vagrant-centos-7-1503-01-x86_64-minimal
+
+
 Contact:
 
 	http://www.brianbirkinbine.com/contact.html
